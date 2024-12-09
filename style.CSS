@@ -1,0 +1,228 @@
+/* Estilos básicos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow-y:auto;
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+}
+
+/* Contenedor Grid */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 3fr; /* 1 columna pequeña (aside) + 1 columna grande (section) */
+    grid-template-rows: auto 1fr auto; /* Se ajusta al contenido */
+    grid-template-areas:
+        "nav nav"
+        "aside section"
+        "footer footer";
+    height: 100vh;
+}
+
+/* Nav Bar */
+nav {
+    grid-area: nav;
+    background-color: #ff69b4b9;
+    padding: 1rem;
+    display:flex;
+    justify-content: center;
+
+}
+
+.logo{
+    width:40%;
+    height: 50%;
+    object-fit: contain;
+}
+
+/* Aside */
+aside {
+    grid-area: aside;
+    background-color: rgba(51, 51, 51, 0.511);
+    padding: 1rem;
+    color:#f5f5f5;
+    display:flex;
+    align-content: center;
+    font-family: "Playwrite HR Lijeva", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    padding:1rem;
+}
+
+/* Section */
+section {
+    grid-area: section;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    background-image: url(./fondo.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction:column;
+    justify-content:start;
+    overflow-y: auto;
+}
+
+.icon{
+    height: 5px;
+    width: 6px;
+    object-fit: contain;
+}
+
+section h2{
+    font-family: "Playwrite HR Lijeva", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color:#ff69b4;
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    padding: 1rem;
+}
+
+
+/* Estilo para los botones de las categorías */
+.toggle-btn {
+    background-color: #ff69b4; /* Rosa */
+    color: white;
+    font-family: "Playwrite HR Lijeva", cursive;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+    padding: 10px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    margin: 0.5rem 0;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.toggle-btn:hover {
+    background-color: #ff4d95; /* Rosa más oscuro */
+}
+
+/* Estilo para los precios */
+.price {
+    float: right; /* Coloca el precio a la derecha */
+    font-weight: bold;
+    color: #ff69b4; /* Color rosa para destacar el precio */
+    font-size: 1.1rem;
+}
+
+.menu-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    overflow: hidden; /* Necesario para que la animación funcione */
+    max-height: 0; /* Inicialmente, la sección está oculta */
+    transition: max-height 0.5s ease-in-out; /* Animación suave */
+}
+
+.menu-list.open {
+    max-height: 500px; /* Ajusta este valor dependiendo del contenido */
+    overflow-y: auto;
+}
+
+/* Estilo de los ítems de la lista */
+.menu-list li {
+    background-color: rgba(255, 255, 255, 0.7); /* Fondo semi-transparente */
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 5px; /* Bordes redondeados */
+    font-size: 1.2rem;
+    color: #333;
+    text-align: left;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para los elementos */
+    display: flex;
+    justify-content: space-between; /* Se asegura de que el nombre y el precio estén separados */
+    align-items: center;
+}
+
+.menu-list li:hover {
+    background-color: #ff69b4; /* Cambio de color al pasar el cursor */
+    color: white; /* Cambia el color del texto */
+    cursor: pointer;
+}
+
+.menu-list li span.price {
+    font-size: 1.1rem; /* Tamaño de fuente para los precios */
+}
+
+
+/* Footer */
+footer {
+    grid-area: footer;
+    background-color: rgba(51, 51, 51, 0.511);
+    color: white;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin:0;
+}
+
+footer p {
+    font-size: 1.2rem;
+    color: rgb(255, 255, 255);
+    margin-bottom: 10px; /* Espacio entre el texto y los íconos */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center; 
+    gap: 15px;              
+}
+
+.social-icons img {
+    width: 40px;         
+    height: 40px;         
+    transition: transform 0.3s ease;
+}
+
+.social-icons img:hover {
+    transform: scale(1.1);
+}
+
+/* Media Query para pantallas de 480px o menos (móviles) */
+@media (max-width: 480px) {
+    .container {
+        grid-template-columns: 1fr; /* Columna única */
+        grid-template-areas:
+            "nav"
+            "section"
+            "aside"
+            "footer";
+    }
+
+    nav {
+        padding: 0.5rem; /* Ajuste de padding */
+        font-size: 1.2rem; /* Tamaño de fuente más pequeño */
+    }
+
+    .logo {
+        height: 40px;  /* Ajusta el tamaño del logo para pantallas más pequeñas */
+    }
+
+    aside {
+       display: none; /* Escondido */
+    }
+
+    section {
+        padding: 0.5rem; /* Ajuste de padding */
+    }
+
+    footer {
+        padding: 0.5rem; /* Ajuste de padding */
+    }
+}
